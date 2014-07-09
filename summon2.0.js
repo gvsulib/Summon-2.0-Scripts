@@ -4,7 +4,16 @@
 //
 $(document).ready(function() {
 
-  var cssPath = '//gvsuliblabs.com/labs/summon2.0/',libDetailPageId, newHref, libCurrentURL, record, recordParts, thisID,libCurrentURL = window.location.hash.substring(1);
+  var cssPath = '//gvsuliblabs.com/labs/summon2.0/',
+      libCurrentURL = window.location.hash.substring(1),
+      $bannerEl = $("div.home"),
+      $innerEl = $('div.inner'),
+      libDetailPageId,
+      newHref,
+      record,
+      recordParts,
+      thisID;
+      
   // Add custom styles
   $('head').append('<link rel="stylesheet" type="text/css" href="' + cssPath + 'summon2.css" />');
 
@@ -14,22 +23,22 @@ $(document).ready(function() {
 
   // Fix the homepage banner links, which are invisible because
   // they are white on a white background
-  if($("div.home").css("display") !== 'none') {
-    $("div.home").prepend('<div id="home-banner" style="height:6em;background-color:#0065a4;">&nbsp;</div>');
-    $("div.home").find(".Logo").css("margin-top","20%");
+  if($bannerEl.css("display") !== 'none') {
+    $bannerEl.prepend('<div id="home-banner" style="height:6em;background-color:#0065a4;">&nbsp;</div>');
+    $bannerEl.find(".Logo").css("margin-top","20%");
   }
 
   // I want the logo to be a bit bigger
   $(".siteHeader .Logo img").attr("src", "//gvsu.edu/homepage/files/img/gvsu_logo.png");
 
   	//Track what type of content user actually click on (with GA)
-  	$('div.inner').on('click','a[ng-class="linkClass"] , a.availabilityLink', function() {
+  	$innerEl.on('click','a[ng-class="linkClass"] , a.availabilityLink', function() {
   		var libContentType = $(this).closest('div.summary').find('div.contentType span.ng-binding').text();
   		_gaq.push(['_trackEvent', 'gvsuCustomClick', 'clickOnMainResult', 'contentType:' + tidyContentType(libContentType)]);
   	});
   	//preview pane - can't think of less stupid way to do this
   	var contentTypeOfLastHoveredOn;
-  	$('div.inner').on('mouseenter','div.documentSummary', function() {
+  	$innerEl.on('mouseenter','div.documentSummary', function() {
   		contentTypeOfLastHoveredOn = $(this).find('div.contentType span.ng-binding').text();
   	});
   	$('div.previewPane').on('click','a[ng-class="linkClass"] , div.previewOptions a.btn.span4:first', function() {
@@ -67,7 +76,8 @@ $(document).ready(function() {
 
   // Remove the text in availability links
 
-  var sillyLinkText,newText;
+  var sillyLinkText,
+      newText;
   $("a.availabilityLink:contains(' Browse Similar')").each(function() {
     sillyLinkText = $(this).text();
     newText = sillyLinkText.replace(' Browse Similar','');
