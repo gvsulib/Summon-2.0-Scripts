@@ -4,13 +4,12 @@
 //
 $(document).ready(function() {
 
-  var cssPath = '//labs.library.gvsu.edu/labs/summon2.0/',
+  var cssPath = '//gvsuliblabs.com/labs/summon2.0/',
       libCurrentURL = window.location.hash.substring(1),
       $bannerEl = $("div.home"),
       $innerEl = $('div.inner'),
       libDetailPageId,
       newHref,
-      libCurrentURL,
       record,
       recordParts,
       thisID;
