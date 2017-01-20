@@ -3,7 +3,7 @@ $(document).ready(function() {
   /* New Custom code for 2016 UI refresh */
 
   setTimeout(function() {
-      libMyScope = angular.element('html').scope();
+    libMyScope = angular.element('html').scope();
     libInitWithScope( );
   }, 1000);
 
@@ -37,11 +37,11 @@ $(document).ready(function() {
     $(".siteHeader img.img-responsive.logo").attr("src", "//www.gvsu.edu/includes/topbanner/3/gvsu_logo.png");
       console.log('Made the logo bigger.');
 
-      // Accessibility add-ons : title elements for confusing icons
+    // Accessibility add-ons : title elements for confusing icons
 
-      $('.icons-sprite.icons-Save2x').parent('button').attr('title','Save this item');
-      $('.icons-sprite.icons-Cite2x').parent('button').attr('title','Cite this item');
-      $('.icons-sprite.icons-Email2x').parent('button').attr('title','Email this item');
+    $('.icons-sprite.icons-Save2x').parent('button').attr('title','Save this item');
+    $('.icons-sprite.icons-Cite2x').parent('button').attr('title','Cite this item');
+    $('.icons-sprite.icons-Email2x').parent('button').attr('title','Email this item');
 
   }, 1000);
 
@@ -54,7 +54,6 @@ $(document).ready(function() {
           // give AngularJS time to update the DOM
           setTimeout(function() {
             libUpdateResultsPage();
-            // recordSearch();
           }, 1000);
         console.log('Scope.feed changed! - loading finished');
       });
@@ -73,24 +72,5 @@ $(document).ready(function() {
         console.log('Zotero error trapped');
       }
   }
-
-   // Record a log to the console for debugging
-
-    function libLog(message) {
-      var date = new Date();
-      var time = date.toLocaleTimeString();
-      console.log(message+' ['+time+']');
-    }
-
-    // Clean up events sent to GA
-
-    function tidyContentType( text ) {
-      if( text ) {
-        res = text.split(" (");
-        text = res[0];
-      }
-      return( text );
-    }
-
 
 });
