@@ -34,7 +34,7 @@ $(document).ready(function() {
 
     /// Make the logo bigger
 
-    $(".siteHeader img.img-responsive.logo").attr("src", "https//www.gvsu.edu/includes/topbanner/3/gvsu_logo.png");
+    $(".siteHeader img.img-responsive.logo").attr("src", "https://www.gvsu.edu/includes/topbanner/3/gvsu_logo.png");
       console.log('Made the logo bigger.');
 
     // Accessibility add-ons : title elements for confusing icons
