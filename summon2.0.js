@@ -23,7 +23,7 @@ $(document).ready(function() {
       li.appendChild(libChatDiv);
       document.querySelector('.springshareV2Btn').appendChild(li);
       var chatWindow = function() {
-        window.open('http://labs.library.gvsu.edu/labs/chat', 'Ask a Question', 'menubar=yes,location=yes,resizable=yes,scrollbars=yes,left=20,top=20,width=460,height=460');
+        window.open('https://prod.library.gvsu.edu/labs/chat', 'Ask a Question', 'menubar=yes,location=yes,resizable=yes,scrollbars=yes,left=20,top=20,width=460,height=460');
       }
       if (libChatDiv.addEventListener) {
         libChatDiv.addEventListener('click', chatWindow, false);
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
     /// Make the logo bigger
 
-    $(".siteHeader img.img-responsive.logo").attr("src", "//www.gvsu.edu/includes/topbanner/3/gvsu_logo.png");
+    $(".siteHeader img.img-responsive.logo").attr("src", "https//www.gvsu.edu/includes/topbanner/3/gvsu_logo.png");
       console.log('Made the logo bigger.');
 
     // Accessibility add-ons : title elements for confusing icons
