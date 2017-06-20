@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   // Update CSS
 
-  $('head').append('<style>#linksMenu { background-color: #069 !important;} .logo {max-height: 48px !important;bottom: .5em;position: relative;} #detailSummary .documentActions a[href*="illiad"]:after { content: " from Another Library";} #detailSummary .documentActions a:first-child{ background: #069 !important;color: white !important;} #detailSummary .documentActions a:first-child:after {content: " GVSU Copy";}.clearRefinements {background: #88b3da;font-size: 1.1em;font-weight: bold;padding: 1em;text-align: center;}</style>');
+  $('head').append('<style>.linksMenu .siteLinks { background-color: #069 !important;} .logo {max-height: 48px !important;bottom: .5em;position: relative;} #detailSummary .documentActions a[href*="illiad"]:after { content: " from Another Library";} #detailSummary .documentActions a:first-child{ background: #069 !important;color: white !important;} #detailSummary .documentActions a:first-child:after {content: " GVSU Copy";}.clearRefinements {background: #88b3da;font-size: 1.1em;font-weight: bold;padding: 1em;text-align: center;}</style>');
 
   setTimeout(function() {
   
