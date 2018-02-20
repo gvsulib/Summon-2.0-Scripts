@@ -53,7 +53,7 @@ $(document).ready(function() {
       $('.siteLinks').find('.flowLogin').hide();
           console.log('Hid broken RefWorks login in menu until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
 
-  }, 2500);
+  }, 4500);
 
 
   function libInitWithScope( ){
