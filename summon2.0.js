@@ -45,7 +45,7 @@ $(document).ready(function() {
 
     // Fix the broken RefWorks link
     $('.flowLogin').parent('div.ng-scope').html('<a href="https://refworks.proquest.com">RefWorks Log In</a>');
-    $('.siteLinks').find('.flowLogin').parent('div.ng-scope')..html('<a href="https://refworks.proquest.com">RefWorks Log In</a>');
+    $('.siteLinks').find('.flowLogin').parent('div.ng-scope').html('<a href="https://refworks.proquest.com">RefWorks Log In</a>');
     console.log('Swapped out broken RefWorks login links until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
 
   }, 1000);
