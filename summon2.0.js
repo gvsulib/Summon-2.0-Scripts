@@ -50,8 +50,8 @@ $(document).ready(function() {
   }, 1000);
 
   setTimeout(function() {
-      $('.siteLinks').find('.flowLogin').parent('div.ng-scope').html('<a href="https://refworks.proquest.com">RefWorks Log In</a>');
-          console.log('Swapped out broken RefWorks login in menu until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
+      $('.siteLinks').find('.flowLogin').hide();
+          console.log('Hid broken RefWorks login in menu until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
 
   }, 2500);
 
