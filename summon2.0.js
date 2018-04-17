@@ -52,6 +52,8 @@ $(document).ready(function() {
   // Define variables
   var databases = '', resultsNumber = '', topics = '', guides = '', relatedLibrarian = '', expansionTerms = '', spellingCorrection = '', hasTopic = false, topicSummary = '', topicTitle = '', topicSource = '';
 
+  console.log('Recording search parameters...');
+
   // Get search query
    var searchQuery = libGetQueryVariable('q', window.location.href);
 
