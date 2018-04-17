@@ -16,7 +16,7 @@ if(isset($_REQUEST['q']) && $_REQUEST['q'] != "") { // Search term is set, it's 
 	$now = time();
 
 	$search_term = htmlspecialchars($db->real_escape_string(strtolower(urldecode($_REQUEST['q']))));
-	$search_results = $db->real_escape_string(urldecode($_REQUEST['r']));
+	$search_results = htmlspecialchars($db->real_escape_string($_REQUEST['r']));
 
 	// Insert search query into database
 	$db->query("INSERT INTO query VALUES('','$search_term', '$search_results', '$now')") or die($db->error);
