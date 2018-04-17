@@ -25,7 +25,7 @@ if(isset($_REQUEST['q']) && $_REQUEST['q'] != "") { // Search term is set, it's 
 	$new_id = $db->insert_id;
 
 	// Check for Topic Explorer mapping
-	if($_REQUEST['te'] == true) { // Save topic explorer data
+	if(($_REQUEST['te'] == true) && (strlen($_REQUEST['tet']) > 0) { // Save topic explorer data
 
 		// Watch out for naughty bits
 		$topic = htmlspecialchars($db->real_escape_string($_REQUEST['tet']));
