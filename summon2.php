@@ -1,6 +1,8 @@
 <?php
 header("Access-Control-Allow-Origin: https://gvsu.summon.serialssolutions.com");
 header("Access-Control-Allow-Origin: http://gvsu.summon.serialssolutions.com");
+header("Content-Type: image/gif");
+echo base64_decode('MXB4IHRyYW5zcGFyZW50IGdpZg==');
 
 // File that defines database connection parameters
 include('config.php');
@@ -16,7 +18,7 @@ if(isset($_REQUEST['q']) && $_REQUEST['q'] != "") { // Search term is set, it's 
 	$now = time();
 
 	$search_term = htmlspecialchars($db->real_escape_string(strtolower(urldecode($_REQUEST['q']))));
-	$search_results = htmlspecialchars($db->real_escape_string($_REQUEST['r']));
+	$search_results = htmlspecialchars($db->real_escape_string(urldecode($_REQUEST['r'])));
 
 	// Insert search query into database
 	$db->query("INSERT INTO query VALUES('','$search_term', '$search_results', '$now')") or die($db->error);
