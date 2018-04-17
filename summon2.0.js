@@ -123,7 +123,7 @@ $(document).ready(function() {
   var searchAuditPost = document.createElement('img');
   searchAuditPost.alt = "";
   searchAuditPost.style.display = 'none';
-  searchAuditPost.src = 'https://localhost:8888/summon2.0/search_audit.php?q=' + searchQuery + '&r=' + resultsNumber + '&d=' + databases + '&t=' + topics + '&g=' + guides + '&l=' + relatedLibrarian + '&x=' + expansionTerms + '&s=' + spellingCorrection + '&te=' + hasTopic + '&tet=' + topicTitle + '&tes=' + topicSource + '&tesum=' +topicSummary + '&f=' +facets;
+  searchAuditPost.src = 'https://prod.library.gvsu.edu/labs/summon2.0/search_audit.php?q=' + searchQuery + '&r=' + resultsNumber + '&d=' + databases + '&t=' + topics + '&g=' + guides + '&l=' + relatedLibrarian + '&x=' + expansionTerms + '&s=' + spellingCorrection + '&te=' + hasTopic + '&tet=' + topicTitle + '&tes=' + topicSource + '&tesum=' +topicSummary + '&f=' +facets;
   document.body.appendChild(searchAuditPost);
 
   }, 2000);
