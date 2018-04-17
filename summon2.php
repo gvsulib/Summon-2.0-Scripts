@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: https://gvsu.summon.serialssolutions.com");
 header("Access-Control-Allow-Origin: http://gvsu.summon.serialssolutions.com");
 header("Content-Type: image/gif");
-echo base64_decode('MXB4IHRyYW5zcGFyZW50IGdpZg==');
+echo base64_decode('R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=');
 
 // File that defines database connection parameters
 include('config.php');
