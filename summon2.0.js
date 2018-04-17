@@ -47,7 +47,26 @@ $(document).ready(function() {
     $('.flowLogin').parent('div.ng-scope').html('<a href="https://refworks.proquest.com">RefWorks Log In</a>');
     console.log('Swapped out broken RefWorks login links until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
 
-    // Script to capture and analyze Summon search results
+
+
+  }, 2000);
+
+  setTimeout(function() {
+      $('.siteLinks').find('.flowLogin').hide();
+          console.log('Hid broken RefWorks login in menu until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
+
+  }, 4500);
+
+
+  function libInitWithScope( ){
+      console.log('initialising...');
+
+      // WATCH FOR RESULTS FEED CHANGES...
+      libMyScope.$watchCollection('feed', function(){
+          // give AngularJS time to update the DOM
+          setTimeout(function() {
+            libUpdateResultsPage();
+            // Script to capture and analyze Summon search results
 
   // Define variables
   var databases = '', resultsNumber = '', topics = '', guides = '', relatedLibrarian = '', expansionTerms = '', spellingCorrection = '', hasTopic = false, topicSummary = '', topicTitle = '', topicSource = '';
@@ -127,25 +146,7 @@ $(document).ready(function() {
   searchAuditPost.style.display = 'none';
   searchAuditPost.src = 'https://prod.library.gvsu.edu/labs/summon2.0/summon2.php?q=' + searchQuery + '&r=' + resultsNumber + '&d=' + databases + '&t=' + topics + '&g=' + guides + '&l=' + relatedLibrarian + '&x=' + expansionTerms + '&s=' + spellingCorrection + '&te=' + hasTopic + '&tet=' + topicTitle + '&tes=' + topicSource + '&tesum=' +topicSummary + '&f=' +facets;
   document.body.appendChild(searchAuditPost);
-
-  }, 2000);
-
-  setTimeout(function() {
-      $('.siteLinks').find('.flowLogin').hide();
-          console.log('Hid broken RefWorks login in menu until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
-
-  }, 4500);
-
-
-  function libInitWithScope( ){
-      console.log('initialising...');
-
-      // WATCH FOR RESULTS FEED CHANGES...
-      libMyScope.$watchCollection('feed', function(){
-          // give AngularJS time to update the DOM
-          setTimeout(function() {
-            libUpdateResultsPage();
-          }, 1000);
+          }, 2000);
         console.log('Scope.feed changed! - loading finished');
       });
 
