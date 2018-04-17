@@ -126,7 +126,7 @@ $(document).ready(function() {
   searchAuditPost.src = 'https://localhost:8888/summon2.0/search_audit.php?q=' + searchQuery + '&r=' + resultsNumber + '&d=' + databases + '&t=' + topics + '&g=' + guides + '&l=' + relatedLibrarian + '&x=' + expansionTerms + '&s=' + spellingCorrection + '&te=' + hasTopic + '&tet=' + topicTitle + '&tes=' + topicSource + '&tesum=' +topicSummary + '&f=' +facets;
   document.body.appendChild(searchAuditPost);
 
-  }, 1000);
+  }, 2000);
 
   setTimeout(function() {
       $('.siteLinks').find('.flowLogin').hide();
