@@ -9,13 +9,13 @@ if ($db->connect_errno) {
 	printf("Connect failed: %s\n", $db->connect_error);
 	exit();
 }
-
+/*
 if(isset($_REQUEST['start'])) {
 	$start = $_REQUEST['start'];
 } else {
 	$start = 0;
 }
-
+*/
 $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results
 							FROM topic_explorer as t, query as q
 							WHERE q.query_id = t.query_id
