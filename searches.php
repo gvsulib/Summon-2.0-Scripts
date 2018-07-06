@@ -22,7 +22,8 @@ $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query
 							OR q.query_id = r.query_id
 							
 							GROUP BY q.query
-							ORDER BY q.query_id ASC") or die($db->error);
+							ORDER BY q.query_id ASC
+							LIMIT 100") or die($db->error);
 
 /*
 $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, d.database_names, e.query_expansion, g.guides, l.librarian, r.topics, s.spelling
