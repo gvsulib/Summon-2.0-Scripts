@@ -16,9 +16,10 @@ if(isset($_REQUEST['start'])) {
 	$start = 0;
 }
 */
-$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results
-							FROM topic_explorer as t, query as q
+$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, r.topics
+							FROM topic_explorer as t, query as q, related_topics as r
 							WHERE q.query_id = t.query_id
+							OR q.query_id = r.query_id
 							
 							GROUP BY q.query
 							ORDER BY q.query_id ASC") or die($db->error);
@@ -38,7 +39,6 @@ $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query
 							LIMIT $start, 100") or die($db->error);
 					*/
 
-var_dump($search_results);
 ?>
 
 <!DOCTYPE html>
@@ -151,9 +151,9 @@ only screen and (max-width: 760px),
 		<th>Topic Source</th>
 		<th>Topic Summary</th>
 		<!--th>Query Expansion</th>
-		<th>Database Names</th>
+		<th>Database Names</th-->
 		<th>Related Topics</th>
-		<th>Spelling Correction</th>
+		<!--th>Spelling Correction</th>
 		<th>Related Guides</th>
 		<th>Related Librarians</th-->
 		
@@ -176,9 +176,9 @@ if($search_results) {
 			echo '<td>' . $row['te_text'] . '</td>';
 			/*
 			echo '<td>' . $row['query_expansion'] . '</td>';
-			echo '<td>' . $row['database_names'] . '</td>';
+			echo '<td>' . $row['database_names'] . '</td>';*/
 			echo '<td>' . $row['topics'] . '</td>';
-			echo '<td>' . $row['spelling'] . '</td>';
+			/*echo '<td>' . $row['spelling'] . '</td>';
 			echo '<td>' . $row['guides'] . '</td>';
 			echo '<td>' . $row['librarians'] . '</td>';*/
 			
