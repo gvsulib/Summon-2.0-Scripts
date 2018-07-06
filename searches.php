@@ -186,6 +186,15 @@ if($search_results) {
 			} else {
 				echo '<td class="expansion"></td>';
 			}
+
+			$db_query = $db->query("SELECT database_names FROM recommended_databases WHERE recommended_databases.query_id = '$query_id' LIMIT 1");
+			if($db_query->num_rows > 0) {
+				while($db_row = $db_query->fetch_assoc()) {
+					echo '<td class="database">' . $db_row['database_names'] . '</td>';
+				}
+			} else {
+				echo '<td class="database"></td>';
+			}
 			
 			$topics_query = $db->query("SELECT topics FROM related_topics WHERE related_topics.query_id = '$query_id' LIMIT 1");
 			if($topics_query->num_rows > 0) {
