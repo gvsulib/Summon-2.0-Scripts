@@ -27,7 +27,7 @@ $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query
 							OR q.query_id = e.query_id
 							GROUP BY q.query
 							ORDER BY q.query_id ASC
-							LIMIT '$start', 1000") or die($db->error);
+							LIMIT $start, 1000") or die($db->error);
 ?>
 
 <!DOCTYPE html>
