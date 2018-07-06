@@ -16,10 +16,9 @@ if(isset($_REQUEST['start'])) {
 	$start = 0;
 }
 */
-$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, r.topics
+$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results
 							FROM topic_explorer as t, query as q, related_topics as r
 							WHERE q.query_id = t.query_id
-							AND q.query_id = r.query_id
 							
 							GROUP BY q.query
 							ORDER BY q.query_id ASC") or die($db->error);
@@ -167,6 +166,7 @@ $i = 1;
 
 if($search_results) {
 	while($row = $search_results->fetch_assoc()) {
+		$query_id = $row['query_id'];
 		echo '<tr id="' . $i . '">';
 			echo '<td>' . $i . '</td>';
 			echo '<td>' . $row['query'] . '</td>';
@@ -176,13 +176,17 @@ if($search_results) {
 			echo '<td>' . $row['te_text'] . '</td>';
 
 			// Toss in a db call here to see if it's faster than my slow calls
-
+			$topics_query = $db->query("SELECT topics FROM related_topics WHERE topics.query_id = '$query_id' LIMIT 1");
+			if($topics_query->num_rows > 0) {
+				while($topic_row = $topics_query->fetch_assoc()) {
+					echo '<td>' . $topic_row['topics'] . '</td>';
+				}
+			}
 
 
 			/*
 			echo '<td>' . $row['query_expansion'] . '</td>';
 			echo '<td>' . $row['database_names'] . '</td>';*/
-			echo '<td>' . $row['topics'] . '</td>';
 			/*echo '<td>' . $row['spelling'] . '</td>';
 			echo '<td>' . $row['guides'] . '</td>';
 			echo '<td>' . $row['librarians'] . '</td>';*/
