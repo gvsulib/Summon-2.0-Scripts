@@ -177,14 +177,14 @@ if($search_results) {
 			echo '<td>' . $row['te_text'] . '</td>';
 
 			// Toss in a db call here to see if it's faster than my slow calls
-			/*
+			
 			$topics_query = $db->query("SELECT topics FROM related_topics WHERE topics.query_id = '$query_id' LIMIT 1");
 			if($topics_query->num_rows > 0) {
 				while($topic_row = $topics_query->fetch_assoc()) {
 					echo '<td>' . $topic_row['topics'] . '</td>';
 				}
 			}
-*/
+
 
 			/*
 			echo '<td>' . $row['query_expansion'] . '</td>';
