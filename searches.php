@@ -10,7 +10,7 @@ if ($db->connect_errno) {
 	exit();
 }
 
-$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query, q.query_results, d.database_names, e.query_expansion, g.guides, l.librarians, r.topics, s.spelling
+$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query, q.query_results, d.database_names, e.query_expansion, g.guides, l.librarian, r.topics, s.spelling
 							FROM topic_explorer as t, query as q, spelling as s, related_topics as r, related_librarians as l, related_guides as g, recommended_databases as d, query_expansion as e
 							WHERE q.id = t.query_id
 							OR q.id = s.query_id
