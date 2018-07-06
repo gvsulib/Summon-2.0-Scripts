@@ -10,6 +10,12 @@ if ($db->connect_errno) {
 	exit();
 }
 
+if(isset($_REQUEST['start'])) {
+	$start = $_REQUEST['start'];
+} else {
+	$start = 0;
+}
+
 $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, d.database_names, e.query_expansion, g.guides, l.librarian, r.topics, s.spelling
 							FROM topic_explorer as t, query as q, spelling as s, related_topics as r, related_librarians as l, related_guides as g, recommended_databases as d, query_expansion as e
 							WHERE q.query_id = t.query_id
@@ -20,8 +26,8 @@ $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query
 							OR q.query_id = d.query_id
 							OR q.query_id = e.query_id
 							GROUP BY q.query
-							ORDER BY q.query_id ASC"
-							LIMIT 1000) or die($db->error);
+							ORDER BY q.query_id ASC
+							LIMIT '$start', 1000") or die($db->error);
 ?>
 
 <!DOCTYPE html>
