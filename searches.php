@@ -153,9 +153,9 @@ only screen and (max-width: 760px),
 		<th>Query Expansion</th>
 		<th>Database Names</th>
 		<th>Related Topics</th>
-		<th>Spelling Correction</th>
-		<th>Related Guides</th>
-		<th>Related Librarians</th>
+		<th>Spelling</th>
+		<th>Guides</th>
+		<th>Librarians</th>
 		
 	  </tr>
 	</thead>
@@ -201,7 +201,20 @@ if($search_results) {
 			$db_query = $db->query("SELECT database_names FROM recommended_databases WHERE recommended_databases.query_id = '$query_id' LIMIT 1");
 			if($db_query->num_rows > 0) {
 				while($db_row = $db_query->fetch_assoc()) {
-					echo '<td class="database">' . $db_row['database_names'] . '</td>';
+
+					// Explode database names into readable list
+					$dbArray = explode(',', $db_row['database_names']);
+					$d = 0;
+					echo '<td class="database"><ul>';
+					foreach($dbArray as $db_Array){
+						if($d > 0) {
+							echo '<li>' . $db_Array .'</li>'; 
+						}
+    					 
+    					$d++;
+					}
+
+					echo '</ul></td>';
 				}
 			} else {
 				echo '<td class="database"></td>';
