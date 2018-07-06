@@ -10,17 +10,17 @@ if ($db->connect_errno) {
 	exit();
 }
 
-$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query, q.query_results, d.database_names, e.query_expansion, g.guides, l.librarian, r.topics, s.spelling
+$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, d.database_names, e.query_expansion, g.guides, l.librarian, r.topics, s.spelling
 							FROM topic_explorer as t, query as q, spelling as s, related_topics as r, related_librarians as l, related_guides as g, recommended_databases as d, query_expansion as e
-							WHERE q.id = t.query_id
-							OR q.id = s.query_id
-							OR q.id = r.query_id
-							OR q.id = l.query_id
-							OR q.id = g.query_id
-							OR q.id = d.query_id
-							OR q.id = e.query_id
+							WHERE q.query_id = t.query_id
+							OR q.query_id = s.query_id
+							OR q.query_id = r.query_id
+							OR q.query_id = l.query_id
+							OR q.query_id = g.query_id
+							OR q.query_id = d.query_id
+							OR q.query_id = e.query_id
 							GROUP BY q.query
-							ORDER BY q.id ASC") or die($db->error);
+							ORDER BY q.query_id ASC") or die($db->error);
 ?>
 
 <!DOCTYPE html>
