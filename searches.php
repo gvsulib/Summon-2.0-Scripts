@@ -169,7 +169,7 @@ if($search_results) {
 	while($row = $search_results->fetch_assoc()) {
 		$query_id = $row['query_id'];
 		echo '<tr id="' . $i . '">';
-			echo '<td>' . $i . '</td>';
+			echo '<td id="' . $query_id . '">' . $i . '</td>';
 			echo '<td>' . $row['query'] . '</td>';
 			echo '<td>' . $row['query_results'] . '</td>';
 			echo '<td>' . $row['te_title'] . '</td>';
@@ -183,6 +183,8 @@ if($search_results) {
 				while($topic_row = $topics_query->fetch_assoc()) {
 					echo '<td>' . $topic_row['topics'] . '</td>';
 				}
+			} else {
+				echo '<td></td>';
 			}
 
 
