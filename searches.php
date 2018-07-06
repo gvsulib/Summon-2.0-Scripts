@@ -17,7 +17,7 @@ if(isset($_REQUEST['start'])) {
 }
 
 $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results
-							FROM topic_explorer as t, query as q, related_topics as r
+							FROM topic_explorer as t, query as q
 							WHERE q.query_id = t.query_id
 							
 							GROUP BY q.query
