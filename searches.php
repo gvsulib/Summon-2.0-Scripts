@@ -178,22 +178,22 @@ if($search_results) {
 
 			// Toss in a db call here to see if it's faster than my slow calls
 
-				$expansion_query = $db->query("SELECT query_expansion FROM query_expansion WHERE query_expansion.query_id = '$query_id' LIMIT 1");
+			$expansion_query = $db->query("SELECT query_expansion FROM query_expansion WHERE query_expansion.query_id = '$query_id' LIMIT 1");
 			if($expansion_query) {
 				while($expansion_row = $expansion_query->fetch_assoc()) {
-					echo '<td>' . $expansion_row['query_expansion'] . '</td>';
+					echo '<td class="expansion">' . $expansion_row['query_expansion'] . '</td>';
 				}
 			} else {
-				echo '<td></td>';
+				echo '<td class="expansion"></td>';
 			}
 			
-			$topics_query = $db->query("SELECT topics FROM related_topics WHERE topics.query_id = '$query_id' LIMIT 1");
+			$topics_query = $db->query("SELECT topics FROM related_topics WHERE related_topics.query_id = '$query_id' LIMIT 1");
 			if($topics_query) {
 				while($topic_row = $topics_query->fetch_assoc()) {
-					echo '<td>' . $topic_row['topics'] . '</td>';
+					echo '<td class="topic">' . $topic_row['topics'] . '</td>';
 				}
 			} else {
-				echo '<td></td>';
+				echo '<td class="topic"></td>';
 			}
 
 		
