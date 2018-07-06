@@ -16,7 +16,7 @@ if(isset($_REQUEST['start'])) {
 	$start = 0;
 }
 
-$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results
+$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, q.query_id
 							FROM topic_explorer as t, query as q
 							WHERE q.query_id = t.query_id
 							
