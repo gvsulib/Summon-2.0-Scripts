@@ -38,7 +38,7 @@ $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query
 							LIMIT $start, 100") or die($db->error);
 					*/
 
-echo $search_results;
+var_dump($search_results);
 ?>
 
 <!DOCTYPE html>
