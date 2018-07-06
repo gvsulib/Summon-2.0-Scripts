@@ -179,7 +179,7 @@ if($search_results) {
 			// Toss in a db call here to see if it's faster than my slow calls
 
 			$expansion_query = $db->query("SELECT query_expansion FROM query_expansion WHERE query_expansion.query_id = '$query_id' LIMIT 1");
-			if($expansion_query) {
+			if($expansion_query->num_rows > 0) {
 				while($expansion_row = $expansion_query->fetch_assoc()) {
 					echo '<td class="expansion">' . $expansion_row['query_expansion'] . '</td>';
 				}
@@ -188,7 +188,7 @@ if($search_results) {
 			}
 			
 			$topics_query = $db->query("SELECT topics FROM related_topics WHERE related_topics.query_id = '$query_id' LIMIT 1");
-			if($topics_query) {
+			if($topics_query->num_rows > 0) {
 				while($topic_row = $topics_query->fetch_assoc()) {
 					echo '<td class="topic">' . $topic_row['topics'] . '</td>';
 				}
