@@ -164,7 +164,7 @@ only screen and (max-width: 760px),
 
 <?php 
 
-$i = 1;
+$i = $start + 1;
 
 if($search_results) {
 	while($row = $search_results->fetch_assoc()) {
