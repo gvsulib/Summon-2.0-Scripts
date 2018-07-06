@@ -150,8 +150,8 @@ only screen and (max-width: 760px),
 		<th>Topic Title</th>
 		<th>Topic Source</th>
 		<th>Topic Summary</th>
-		<!--th>Query Expansion</th>
-		<th>Database Names</th-->
+		<th>Query Expansion</th>
+		<!--th>Database Names</th-->
 		<th>Related Topics</th>
 		<!--th>Spelling Correction</th>
 		<th>Related Guides</th>
@@ -177,9 +177,18 @@ if($search_results) {
 			echo '<td>' . $row['te_text'] . '</td>';
 
 			// Toss in a db call here to see if it's faster than my slow calls
+
+				$expansion_query = $db->query("SELECT query_expansion FROM query_expansion WHERE query_expansion.query_id = '$query_id' LIMIT 1");
+			if($expansion_query) {
+				while($expansion_row = $expansion_query->fetch_assoc()) {
+					echo '<td>' . $expansion_row['query_expansion'] . '</td>';
+				}
+			} else {
+				echo '<td></td>';
+			}
 			
 			$topics_query = $db->query("SELECT topics FROM related_topics WHERE topics.query_id = '$query_id' LIMIT 1");
-			if($topics_query->num_rows > 0) {
+			if($topics_query) {
 				while($topic_row = $topics_query->fetch_assoc()) {
 					echo '<td>' . $topic_row['topics'] . '</td>';
 				}
@@ -187,6 +196,7 @@ if($search_results) {
 				echo '<td></td>';
 			}
 
+		
 
 			/*
 			echo '<td>' . $row['query_expansion'] . '</td>';
