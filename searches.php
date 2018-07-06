@@ -286,6 +286,15 @@ if($search_results) {
 	</tbody>
 </table>
 
+<?php
+
+if($start > 0) {
+	echo '<a href="searches.php?start=' . $start-500 . '">Previous</a> |&nbsp;';
+}
+echo '<a href="searches.php?start=' . $start+500 . '">Next</a>';
+
+?>
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
