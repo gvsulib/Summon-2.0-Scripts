@@ -127,8 +127,9 @@ only screen and (max-width: 760px),
 	td:nth-of-type(5):before { content: "Source"; }
 	td:nth-of-type(6):before { content: "Summary"; }
 	td:nth-of-type(7):before { content: "Expansion"; }
-	td:nth-of-type(8):before { content: "Databases"; }
-	td:nth-of-type(9):before { content: "Topics"; }
+	
+	td:nth-of-type(8):before { content: "Topics"; }
+	td:nth-of-type(9):before { content: "Databases"; }
 	td:nth-of-type(10):before { content: "Spelling"; }
 	td:nth-of-type(11):before { content: "Guides"; }
 	td:nth-of-type(12):before { content: "Librarians"; }
@@ -151,8 +152,8 @@ only screen and (max-width: 760px),
 		<th>Topic Source</th>
 		<th>Topic Summary</th>
 		<th>Query Expansion</th>
-		<th>Database Names</th>
 		<th>Related Topics</th>
+		<th>Database Names</th>
 		<th>Spelling</th>
 		<th>Guides</th>
 		<th>Librarians</th>
@@ -192,7 +193,20 @@ if($search_results) {
 			$topics_query = $db->query("SELECT topics FROM related_topics WHERE related_topics.query_id = '$query_id' LIMIT 1");
 			if($topics_query->num_rows > 0) {
 				while($topic_row = $topics_query->fetch_assoc()) {
-					echo '<td class="topic">' . $topic_row['topics'] . '</td>';
+
+					// Explode topic names into readable list
+					$tArray = explode(',', $topic_row['topics']);
+					$tt = 0;
+					echo '<td class="topic"><ul>';
+					foreach($tArray as $t_Array){
+						if($tt > 0) {
+							echo '<li>' . $t_Array .'</li>'; 
+						}
+    					 
+    					$tt++;
+					}
+
+					echo '</ul></td>';
 				}
 			} else {
 				echo '<td class="topic"></td>';
@@ -232,7 +246,22 @@ if($search_results) {
 			$guides_query = $db->query("SELECT guides FROM related_guides WHERE related_guides.query_id = '$query_id' LIMIT 1");
 			if($guides_query->num_rows > 0) {
 				while($guides_row = $guides_query->fetch_assoc()) {
-					echo '<td class="guides">' . $guides_row['guides'] . '</td>';
+
+
+					// Explode topic names into readable list
+					$gArray = explode(',', $guides_row['guides']);
+					$g = 0;
+					echo '<td class="guides"><ul>';
+					foreach($gArray as $g_Array){
+						if($g > 0) {
+							echo '<li>' . $g_Array .'</li>'; 
+						}
+    					 
+    					$g++;
+					}
+
+					echo '</ul></td>';
+
 				}
 			} else {
 				echo '<td class="guides"></td>';
