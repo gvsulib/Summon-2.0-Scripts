@@ -19,11 +19,10 @@ if(isset($_REQUEST['start'])) {
 $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, r.topics
 							FROM topic_explorer as t, query as q, related_topics as r
 							WHERE q.query_id = t.query_id
-							OR q.query_id = r.query_id
+							AND q.query_id = r.query_id
 							
 							GROUP BY q.query
-							ORDER BY q.query_id ASC
-							LIMIT 100") or die($db->error);
+							ORDER BY q.query_id ASC") or die($db->error);
 
 /*
 $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, d.database_names, e.query_expansion, g.guides, l.librarian, r.topics, s.spelling
@@ -175,6 +174,11 @@ if($search_results) {
 			echo '<td>' . $row['te_title'] . '</td>';
 			echo '<td>' . $row['te_source'] . '</td>';
 			echo '<td>' . $row['te_text'] . '</td>';
+
+			// Toss in a db call here to see if it's faster than my slow calls
+
+
+
 			/*
 			echo '<td>' . $row['query_expansion'] . '</td>';
 			echo '<td>' . $row['database_names'] . '</td>';*/
