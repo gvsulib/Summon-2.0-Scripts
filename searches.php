@@ -151,11 +151,11 @@ only screen and (max-width: 760px),
 		<th>Topic Source</th>
 		<th>Topic Summary</th>
 		<th>Query Expansion</th>
-		<!--th>Database Names</th-->
+		<th>Database Names</th>
 		<th>Related Topics</th>
-		<!--th>Spelling Correction</th>
+		<th>Spelling Correction</th>
 		<th>Related Guides</th>
-		<th>Related Librarians</th-->
+		<th>Related Librarians</th>
 		
 	  </tr>
 	</thead>
@@ -187,14 +187,7 @@ if($search_results) {
 				echo '<td class="expansion"></td>';
 			}
 
-			$db_query = $db->query("SELECT database_names FROM recommended_databases WHERE recommended_databases.query_id = '$query_id' LIMIT 1");
-			if($db_query->num_rows > 0) {
-				while($db_row = $db_query->fetch_assoc()) {
-					echo '<td class="database">' . $db_row['database_names'] . '</td>';
-				}
-			} else {
-				echo '<td class="database"></td>';
-			}
+			
 			
 			$topics_query = $db->query("SELECT topics FROM related_topics WHERE related_topics.query_id = '$query_id' LIMIT 1");
 			if($topics_query->num_rows > 0) {
@@ -205,14 +198,42 @@ if($search_results) {
 				echo '<td class="topic"></td>';
 			}
 
-		
+			$db_query = $db->query("SELECT database_names FROM recommended_databases WHERE recommended_databases.query_id = '$query_id' LIMIT 1");
+			if($db_query->num_rows > 0) {
+				while($db_row = $db_query->fetch_assoc()) {
+					echo '<td class="database">' . $db_row['database_names'] . '</td>';
+				}
+			} else {
+				echo '<td class="database"></td>';
+			}
 
-			/*
-			echo '<td>' . $row['query_expansion'] . '</td>';
-			echo '<td>' . $row['database_names'] . '</td>';*/
-			/*echo '<td>' . $row['spelling'] . '</td>';
-			echo '<td>' . $row['guides'] . '</td>';
-			echo '<td>' . $row['librarians'] . '</td>';*/
+			$spell_query = $db->query("SELECT spelling FROM spelling WHERE spelling.query_id = '$query_id' LIMIT 1");
+			if($spell_query->num_rows > 0) {
+				while($spell_row = $spell_query->fetch_assoc()) {
+					echo '<td class="spelling">' . $spell_row['spelling'] . '</td>';
+				}
+			} else {
+				echo '<td class="spelling"></td>';
+			}
+
+			$guides_query = $db->query("SELECT guides FROM related_guides WHERE related_guides.query_id = '$query_id' LIMIT 1");
+			if($guides_query->num_rows > 0) {
+				while($guides_row = $guides_query->fetch_assoc()) {
+					echo '<td class="guides">' . $guides_row['guides'] . '</td>';
+				}
+			} else {
+				echo '<td class="guides"></td>';
+			}
+
+			$librarians_query = $db->query("SELECT librarian FROM related_librarians WHERE related_librarians.query_id = '$query_id' LIMIT 1");
+			if($librarians_query->num_rows > 0) {
+				while($librarians_row = $librarians_query->fetch_assoc()) {
+					echo '<td class="librarians">' . $librarians_row['librarian'] . '</td>';
+				}
+			} else {
+				echo '<td class="librarians"></td>';
+			}
+
 			
 		echo '</tr>';
 		$i++;
