@@ -289,9 +289,9 @@ if($search_results) {
 <?php
 
 if($start > 0) {
-	echo '<a href="searches.php?start=' . $start-500 . '">Previous</a> |&nbsp;';
+	echo '<a href="searches.php?start=' . ($start-500) . '">Previous</a> |&nbsp;';
 }
-echo '<a href="searches.php?start=' . $start+500 . '">Next</a>';
+echo '<a href="searches.php?start=' . ($start+500) . '">Next</a>';
 
 ?>
 
