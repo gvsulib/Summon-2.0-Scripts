@@ -16,6 +16,15 @@ if(isset($_REQUEST['start'])) {
 	$start = 0;
 }
 
+$search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results
+							FROM topic_explorer as t, query as q
+							WHERE q.query_id = t.query_id
+							
+							GROUP BY q.query
+							ORDER BY q.query_id ASC
+							LIMIT $start, 100") or die($db->error);
+
+/*
 $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query_id, q.query, q.query_results, d.database_names, e.query_expansion, g.guides, l.librarian, r.topics, s.spelling
 							FROM topic_explorer as t, query as q, spelling as s, related_topics as r, related_librarians as l, related_guides as g, recommended_databases as d, query_expansion as e
 							WHERE q.query_id = t.query_id
@@ -28,6 +37,9 @@ $search_results = $db->query("SELECT t.te_source, t.te_text, t.te_title, q.query
 							GROUP BY q.query
 							ORDER BY q.query_id ASC
 							LIMIT $start, 100") or die($db->error);
+					*/
+
+echo $search_results;
 ?>
 
 <!DOCTYPE html>
@@ -139,12 +151,12 @@ only screen and (max-width: 760px),
 		<th>Topic Title</th>
 		<th>Topic Source</th>
 		<th>Topic Summary</th>
-		<th>Query Expansion</th>
+		<!--th>Query Expansion</th>
 		<th>Database Names</th>
 		<th>Related Topics</th>
 		<th>Spelling Correction</th>
 		<th>Related Guides</th>
-		<th>Related Librarians</th>
+		<th>Related Librarians</th-->
 		
 	  </tr>
 	</thead>
@@ -163,12 +175,13 @@ if($search_results) {
 			echo '<td>' . $row['te_title'] . '</td>';
 			echo '<td>' . $row['te_source'] . '</td>';
 			echo '<td>' . $row['te_text'] . '</td>';
+			/*
 			echo '<td>' . $row['query_expansion'] . '</td>';
 			echo '<td>' . $row['database_names'] . '</td>';
 			echo '<td>' . $row['topics'] . '</td>';
 			echo '<td>' . $row['spelling'] . '</td>';
 			echo '<td>' . $row['guides'] . '</td>';
-			echo '<td>' . $row['librarians'] . '</td>';
+			echo '<td>' . $row['librarians'] . '</td>';*/
 			
 		echo '</tr>';
 		$i++;
