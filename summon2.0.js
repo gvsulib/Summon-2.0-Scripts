@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   // Update CSS
 
-  $('head').append('<style>.linksMenu .siteLinks { background-color: #069 !important;} .logo {max-height: 48px !important;bottom: .5em;position: relative;} #detailSummary .documentActions a[href*="illiad"]:after { content: " from Another Library";} #detailSummary .documentActions a[href*="library.catalog"] { background: #069 !important;color: white !important;} #detailSummary .documentActions a[href*="library.catalog"]:after {content: " GVSU Copy";}.clearRefinementsContainer {background: #88b3da;font-size: 1.1em;font-weight: bold;padding: 1em;text-align: center;}#library-chat a { padding: 6px 12px !important;}</style>');
+  $('head').append('<style>.linksMenu .siteLinks { background-color: #069 !important;} .toggleTopicExplorer { display: none !important; } .logo {max-height: 48px !important;bottom: .5em;position: relative;} #detailSummary .documentActions a[href*="illiad"]:after { content: " from Another Library";} #detailSummary .documentActions a[href*="library.catalog"] { background: #069 !important;color: white !important;} #detailSummary .documentActions a[href*="library.catalog"]:after {content: " GVSU Copy";}.clearRefinementsContainer {background: #88b3da;font-size: 1.1em;font-weight: bold;padding: 1em;text-align: center;}#library-chat a { padding: 6px 12px !important;}</style>');
 
   setTimeout(function() {
   
@@ -68,6 +68,7 @@ $(document).ready(function() {
             libUpdateResultsPage();
             // Script to capture and analyze Summon search results
 
+/*
   // Define variables
   var databases = '', resultsNumber = '', topics = '', guides = '', relatedLibrarian = '', expansionTerms = '', spellingCorrection = '', hasTopic = false, topicSummary = '', topicTitle = '', topicSource = '';
 
@@ -146,7 +147,9 @@ $(document).ready(function() {
   searchAuditPost.style.display = 'none';
   searchAuditPost.src = 'https://prod.library.gvsu.edu/labs/summon2.0/summon2.php?q=' + searchQuery + '&r=' + resultsNumber + '&d=' + databases + '&t=' + topics + '&g=' + guides + '&l=' + relatedLibrarian + '&x=' + expansionTerms + '&s=' + spellingCorrection + '&te=' + hasTopic + '&tet=' + topicTitle + '&tes=' + topicSource + '&tesum=' +topicSummary + '&f=' +facets;
   document.body.appendChild(searchAuditPost);
-          }, 2000);
+    */
+          }, 800);
+
         console.log('Scope.feed changed! - loading finished');
       });
 
