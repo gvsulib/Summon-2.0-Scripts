@@ -59,11 +59,12 @@ $(document).ready(function() {
 
   function melHelper() {
 
-if($('ul.facetValues li.applied a').attr('title') == 'Book / eBook') {
+
+if($('ul.facetValues li.applied a').attr('title') === 'Book / eBook') {
   console.log('eBook selected');
   // Check for Best bets or database recommendations
 
-  var firstResult = $('#results div.inner ul.list-unstyled li:nth-child(2) div').attr('class');
+  var firstResult = $('#results > div.inner > ul.list-unstyled > li:nth-child(2) div').attr('class');
   var searchTerms = $('input#searchBox_32').val();
 
   var MeLhint = '<li class="ng-scope"><div class="mel_hint"> <h3>Don&#8217;t see the book you&#8217;re looking for?</h3> <p>You can borrow items from over 400 Michigan libraries, delivered free to GVSU.</p><p> <a href="https://elibrary.mel.org/search/a?searchtype=X&searcharg=' + searchTerms + '&SORT=D&submit=Submit" class="btn btn-primary mich">Search Michigan Libraries</a></p> </div> <style> div.mel_hint {background-color:#88b3da; padding:1em;} .mich { background: url("//library.catalog.gvsu.edu/screens/libicon-016.png") no-repeat 4% 30%;padding-left:36px;background-color:#eeeeee;}</style> </li>';
@@ -71,12 +72,12 @@ if($('ul.facetValues li.applied a').attr('title') == 'Book / eBook') {
   if(firstResult === 'documentSummary') {
     // Insert the hint before the second list item recommendation
 
-    $('#results div.inner ul.list-unstyled li:nth-child(2)').before(MeLhint);
+    $('#results > div.inner > ul.list-unstyled > li:nth-child(2)').before(MeLhint);
 
   } else {
     // Insert hint after the second list item (there is a best bet or database recommendation)
 
-    $('#results div.inner ul.list-unstyled li:nth-child(2)').after(MeLhint);
+    $('#results > div.inner > ul.list-unstyled > li:nth-child(2)').after(MeLhint);
   }
 
 } else {
@@ -96,7 +97,11 @@ if($('ul.facetValues li.applied a').attr('title') == 'Book / eBook') {
             libUpdateResultsPage();
             // Script to capture and analyze Summon search results
 
-            melHelper();
+
+            // Check to make sure the book helper isn't already on there
+            if($('.mel_hint').length === 0) {
+              melHelper();
+            }
 
 /*
   // Define variables
@@ -178,7 +183,7 @@ if($('ul.facetValues li.applied a').attr('title') == 'Book / eBook') {
   searchAuditPost.src = 'https://prod.library.gvsu.edu/labs/summon2.0/summon2.php?q=' + searchQuery + '&r=' + resultsNumber + '&d=' + databases + '&t=' + topics + '&g=' + guides + '&l=' + relatedLibrarian + '&x=' + expansionTerms + '&s=' + spellingCorrection + '&te=' + hasTopic + '&tet=' + topicTitle + '&tes=' + topicSource + '&tesum=' +topicSummary + '&f=' +facets;
   document.body.appendChild(searchAuditPost);
     */
-          }, 800);
+          }, 2000);
 
         console.log('Scope.feed changed! - loading finished');
       });
