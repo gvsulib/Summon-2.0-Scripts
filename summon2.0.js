@@ -57,9 +57,37 @@ $(document).ready(function() {
 
   }, 4500);
 
+  function melHelper() {
+
+if($('ul.facetValues li.applied a').attr('title') == 'Book / eBook') {
+  console.log('eBook selected');
+  // Check for Best bets or database recommendations
+
+  var firstResult = $('#results div.inner ul.list-unstyled li:nth-child(2) div').attr('class');
+  var searchTerms = $('input#searchBox_32').val();
+
+  var MeLhint = '<li class="ng-scope"><div class="mel_hint"> <h3>Don&#8217;t see the book you&#8217;re looking for?</h3> <p>You can borrow items from over 400 Michigan libraries, delivered free to GVSU.</p><p> <a href="https://elibrary.mel.org/search/a?searchtype=X&searcharg=' + searchTerms + '&SORT=D&submit=Submit" class="btn btn-primary mich">Search Michigan Libraries</a></p> </div> <style> div.mel_hint {background-color:#88b3da; padding:1em;} .mich { background: url("//library.catalog.gvsu.edu/screens/libicon-016.png") no-repeat 4% 30%;padding-left:36px;background-color:#eeeeee;}</style> </li>';
+
+  if(firstResult === 'documentSummary') {
+    // Insert the hint before the second list item recommendation
+
+    $('#results div.inner ul.list-unstyled li:nth-child(2)').before(MeLhint);
+
+  } else {
+    // Insert hint after the second list item (there is a best bet or database recommendation)
+
+    $('#results div.inner ul.list-unstyled li:nth-child(2)').after(MeLhint);
+  }
+
+} else {
+  console.log('No book filter');
+}
+  }
+
 
   function libInitWithScope( ){
       console.log('initialising...');
+
 
       // WATCH FOR RESULTS FEED CHANGES...
       libMyScope.$watchCollection('feed', function(){
@@ -67,6 +95,8 @@ $(document).ready(function() {
           setTimeout(function() {
             libUpdateResultsPage();
             // Script to capture and analyze Summon search results
+
+            melHelper();
 
 /*
   // Define variables
