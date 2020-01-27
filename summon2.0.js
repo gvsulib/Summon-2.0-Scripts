@@ -44,10 +44,11 @@ $(document).ready(function() {
     $('.icons-sprite.icons-Email2x').parent('button').attr('title','Email this item');
 
     // Fix the broken RefWorks link
+    /*
     $('.flowLogin').parent('div.ng-scope').html('<a href="https://refworks.proquest.com">RefWorks Log In</a>');
     console.log('Swapped out broken RefWorks login links until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
 
-
+    */
 
   }, 2000);
 
