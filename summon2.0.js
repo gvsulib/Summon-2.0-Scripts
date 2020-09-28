@@ -43,6 +43,13 @@ $(document).ready(function() {
     $('.icons-sprite.icons-Cite2x').parent('button').attr('title','Cite this item');
     $('.icons-sprite.icons-Email2x').parent('button').attr('title','Email this item');
 
+     // Track the usage of Refworks links
+    $('a[href*="/citation/refworks"]').click(function(e) {
+  
+      $('body').append('<img src="https://prod.library.gvsu.edu/labs/summon2.0/refworks_data.php" alt="" />');
+
+    });
+
 
   }, 2000);
 
@@ -181,12 +188,7 @@ if($('ul.facetValues li.applied a').attr('title') === 'Book / eBook') {
 
   function libUpdateResultsPage() {
 
-     // Track the usage of Refworks links
-    $('a[href*="/citation/refworks"]').click(function(e) {
-  
-      $('body').append('<img src="https://prod.library.gvsu.edu/labs/summon2.0/refworks_data.php" alt="" />');
 
-    });
 
       /* Tell Zotero new COinS records have been created */
       try {
