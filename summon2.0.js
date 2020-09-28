@@ -44,11 +44,17 @@ $(document).ready(function() {
     $('.icons-sprite.icons-Email2x').parent('button').attr('title','Email this item');
 
      // Track the usage of Refworks links
-    $('a[href*="/citation/refworks"]').click(function(e) {
-  
-      $('body').append('<img src="https://prod.library.gvsu.edu/labs/summon2.0/refworks_data.php" alt="" />');
 
-    });
+    $('.more-actions').click(function() {
+  
+      $('a[href*="/citation/refworks"]').click(function() {
+  
+    $('body').append('<img src="https://prod.library.gvsu.edu/labs/summon2.0/refworks_data.php" alt="" />');
+
+  });
+});
+
+
 
 
   }, 2000);
