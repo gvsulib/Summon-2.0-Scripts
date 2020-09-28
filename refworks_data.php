@@ -1,5 +1,7 @@
 <?php
  header("Access-Control-Allow-Origin: *");
+ date_default_timezone_set('America/Detroit'); // Set to Eastern Time
+
 
  // Let's record another RefWorks export
 
