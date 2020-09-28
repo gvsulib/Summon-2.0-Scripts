@@ -43,20 +43,8 @@ $(document).ready(function() {
     $('.icons-sprite.icons-Cite2x').parent('button').attr('title','Cite this item');
     $('.icons-sprite.icons-Email2x').parent('button').attr('title','Email this item');
 
-    // Fix the broken RefWorks link
-    /*
-    $('.flowLogin').parent('div.ng-scope').html('<a href="https://refworks.proquest.com">RefWorks Log In</a>');
-    console.log('Swapped out broken RefWorks login links until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
-
-    */
 
   }, 2000);
-
-  setTimeout(function() {
-      $('.siteLinks').find('.flowLogin').hide();
-          console.log('Hid broken RefWorks login in menu until ExLibris gets around to fixing them. PQ Ticket #03361447 , EL Ticket #00518647 ');
-
-  }, 4500);
 
   function melHelper() {
 
@@ -192,6 +180,13 @@ if($('ul.facetValues li.applied a').attr('title') === 'Book / eBook') {
   }
 
   function libUpdateResultsPage() {
+
+     // Track the usage of Refworks links
+    $('a[href*="/citation/refworks"]').click(function(e) {
+  
+      $('body').append('<img src="https://prod.library.gvsu.edu/labs/summon2.0/refworks_data.php" alt="" />');
+
+    });
 
       /* Tell Zotero new COinS records have been created */
       try {
