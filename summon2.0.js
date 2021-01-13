@@ -54,7 +54,11 @@ $(document).ready(function() {
   });
 });
 
+// Add banner to tell folks to use EDS
+  var searchTermsEds = $('input#searchBox_32').val();
 
+var EDSbanner = '<li class="ng-scope"><div class="eds_hint"> <h3>Try our new search experience</h3> <p>The University Libraries has a new search engine. This system is no longer updated with current holdings, and will be retired in the summer of 2021.</p><p> <a href="https://search.ebscohost.com/login.aspx?bquery=' + searchTermsEds + '&custid=s8484662&direct=true&scope=site&site=eds-live&profid=eds&groupid=main&authtype=ip,guest" class="btn btn-primary">Use the new Library Search</a></p> </div> <style> div.eds_hint {background-color:#88b3da; padding:1em;}</style> </li>';
+$('#results > div.inner > ul.list-unstyled > li:nth-child(2)').before(EDSbanner);
 
 
   }, 2000);
