@@ -45,14 +45,6 @@ $(document).ready(function() {
 
      // Track the usage of Refworks links
 
-    $('.more-actions').click(function() {
-  
-      $('a[href*="/citation/refworks"]').click(function() {
-  
-    $('body').append('<img src="https://prod.library.gvsu.edu/labs/summon2.0/refworks_data.php" alt="" />');
-
-  });
-});
 
 // Add banner to tell folks to use EDS
   var searchTermsEds = $('input#searchBox_32').val();
@@ -65,30 +57,6 @@ $('#results > div.inner > ul.list-unstyled > li:nth-child(2)').before(EDSbanner)
 
   function melHelper() {
 
-
-if($('ul.facetValues li.applied a').attr('title') === 'Book / eBook') {
-  console.log('eBook selected');
-  // Check for Best bets or database recommendations
-
-  var firstResult = $('#results > div.inner > ul.list-unstyled > li:nth-child(2) div').attr('class');
-  var searchTerms = $('input#searchBox_32').val();
-
-  var MeLhint = '<li class="ng-scope"><div class="mel_hint"> <h3>Don&#8217;t see the book you&#8217;re looking for?</h3> <p>You can borrow items from over 400 Michigan libraries, delivered free to GVSU.</p><p> <a href="https://elibrary.mel.org/search/a?searchtype=X&searcharg=' + searchTerms + '&SORT=D&submit=Submit" class="btn btn-primary mich">Search Michigan Libraries</a></p> </div> <style> div.mel_hint {background-color:#88b3da; padding:1em;} .mich { background: url("//library.catalog.gvsu.edu/screens/libicon-016.png") no-repeat 4% 30%;padding-left:36px;background-color:#eeeeee;}</style> </li>';
-
-  if(firstResult === 'documentSummary') {
-    // Insert the hint before the second list item recommendation
-
-    $('#results > div.inner > ul.list-unstyled > li:nth-child(2)').before(MeLhint);
-
-  } else {
-    // Insert hint after the second list item (there is a best bet or database recommendation)
-
-    $('#results > div.inner > ul.list-unstyled > li:nth-child(2)').after(MeLhint);
-  }
-
-} else {
-  console.log('No book filter');
-}
   }
 
 
